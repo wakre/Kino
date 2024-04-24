@@ -18,14 +18,13 @@ public class KinoRepository {
     }
 
     public List<Billetter> hentAlle(){
-        String sql = "SELECT * FROM Billetter";
+        String sql = "SELECT * FROM Billetter ORDER BY etternavn";
         List<Billetter> alleBilletter = db.query(sql, new BeanPropertyRowMapper(Billetter.class));
-        alleBilletter.sort(Comparator.comparing(Billetter::getEtternavn));
         return alleBilletter;
     }
 
     public void slettAlle(){
-        String sql ="DELETE FROM Billetter";
+        String sql ="DELETE * FROM Billetter";
         db.update(sql);
     }
 }
