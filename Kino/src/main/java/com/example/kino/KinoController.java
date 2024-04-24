@@ -15,8 +15,8 @@ public class KinoController {
         KinoRepository rep;
 
         @PostMapping("/lagre")
-        public void lagrebillett(Billetter billett){
-                rep.lagrebillett(billett);
+        public void lagrebillett(Billetter innbillett){
+                rep.lagrebillett(innbillett);
         }
 
         @GetMapping("/hentAlle")
@@ -24,8 +24,8 @@ public class KinoController {
                 return rep.hentAlle();
         }
 
-        @GetMapping("/slettAlle")
-        public void slettAlle(){
+        @GetMapping("/slett")
+        public void slett(){
                 rep.slettAlle();
         }
 }
