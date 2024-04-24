@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oblig3</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="Kinobilliter.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <h1>Besttilling av Kino Billetter </h1>
+    <div class="rew">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for = "velgFilm"> velg film : </label>
+                <select id="velgFilm" class="form-control">
+                    <option disabled selected value=""> velg film her </option>
+                    <option>Replay1988</option>
+                    <option>MyLife</option>
+                    <option>WelcomeHome</option>
+                    <option>SweetHome</option>
+                    <option>Taitanic</option>
+                    <option>MoonLovers</option>
+                    <option>Doctors</option>
+                    <option>Goblin</option>
+                    <option>DoctorSlump</option>
+                    <option>Deadpool</option>
+                </select>
+
+                <td> <span id = "velgFeil" style=" color : darkred"></span></td>
+            </div>
+            <div class="form-group">
+                <label for="antall">Antall </label>
+                <td>  <input type="number"  class="form-control" id="antall"/></td>
+                <td><span id ="antallFeil" style ="color: darkred"></span></td>
+            </div>
+
+            <div class="form-group">
+                <label for="fornavn"> Fornavn </label>
+                <input type ="text" class="form-control" id="fornavn" />
+                <span id ="fornavnFeil" style=" color : darkred"></span></td>
+            </div>
+
+            <div class="form-group">
+                <label for="etternavn"> Etternavn </label>
+                <input type ="text" class="form-control" id="etternavn" />
+                <td><span id ="etternavnFeil" style=" color : darkred"></span></td>
+            </div>
+
+            <div class="form-group">
+                <label for="telefonnr"> Telefonnr </label>
+                <input type ="text" class="form-control" id="telefonnr" />
+                <td><span id ="telefonnrFeil" style=" color : darkred"></span></td>
+            </div>
+            <div class="form-group">
+                <lebel for="epost"> E.poat </lebel>
+                <input type ="text" class="form-control" id ="epost" />
+                <td><span id ="epostFeil" style=" color : darkred"></span></td>
+            </div>
+            </form>
+
+            <button type="button" onclick ="kjøpBillett()"> Kjøp billett </button>
+
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h2> Alle billettene </h2>
+
+                <div id ="skriveut" class="table-responsive"></div>
+
+                <button class="btn btn-danger" onclick="slettBillettene()"> Slett Alle Billettene </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
