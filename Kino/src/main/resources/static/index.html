@@ -1,79 +1,71 @@
 <!DOCTYPE html>
-<html lang="en"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Oblig3</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <script src="Kinobilliter.js"></script>
 </head>
 <body>
 <div class="container">
-    <h1>Besttilling av Kino Billetter </h1>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for = "velgFilm"> velg film : </label>
-                <select id="velgFilm" class="form-control">
-                    <option disabled selected value=""> velg film her </option>
-                    <option>Replay1988</option>
-                    <option>MyLife</option>
-                    <option>WelcomeHome</option>
-                    <option>SweetHome</option>
-                    <option>Taitanic</option>
-                    <option>MoonLovers</option>
-                    <option>Doctors</option>
-                    <option>Goblin</option>
-                    <option>DoctorSlump</option>
-                    <option>Deadpool</option>
-                </select>
-
-                <td> <span id = "velgFeil" style=" color : darkred"></span></td>
-            </div>
-            <div class="form-group">
-                <label for="antall">Antall </label>
-                <td>  <input type="number"  class="form-control" id="antall"/></td>
-                <td><span id ="antallFeil" style ="color: darkred"></span></td>
-            </div>
-
-            <div class="form-group">
-                <label for="fornavn"> Fornavn </label>
-                <input type ="text" class="form-control" id="fornavn" />
-                <span id ="fornavnFeil" style=" color : darkred"></span></td>
-            </div>
-
-            <div class="form-group">
-                <label for="etternavn"> Etternavn </label>
-                <input type ="text" class="form-control" id="etternavn" />
-                <td><span id ="etternavnFeil" style=" color : darkred"></span></td>
-            </div>
-
-            <div class="form-group">
-                <label for="telefonnr"> Telefonnr </label>
-                <input type ="text" class="form-control" id="telefonnr" />
-                <td><span id ="telefonnrFeil" style=" color : darkred"></span></td>
-            </div>
-            <div class="form-group">
-                <lebel for="epost"> E.poat </lebel>
-                <input type ="text" class="form-control" id ="epost" />
-                <td><span id ="epostFeil" style=" color : darkred"></span></td>
-            </div>
-            </form>
-
-            <button type="button" onclick ="kjøpBillett()"> Kjøp billett </button>
-
-        </div>
+    <h1>Bestilling av Kino Billetter</h1>
+    <form>
         <div class="row">
-            <div class="col-md-8">
-                <h2> Alle billettene </h2>
-
-                <div id ="skriveut" class="table-responsive"></div>
-
-                <button class="btn btn-danger" onclick="slettBillettene()"> Slett Alle Billettene </button>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="velgFilm">Velg film:</label>
+                    <select id="velgFilm" class="form-control">
+                        <option disabled selected value="">Velg film her</option>
+                        <option>Replay1988</option>
+                        <option>MyLife</option>
+                        <option>WelcomeHome</option>
+                        <option>SweetHome</option>
+                        <option>Taitanic</option>
+                        <option>MoonLovers</option>
+                        <option>Doctors</option>
+                        <option>Goblin</option>
+                        <option>DoctorSlump</option>
+                        <option>Deadpool</option>
+                    </select>
+                    <span id="velgFeil" style="color: darkred"></span>
+                </div>
+                <div class="form-group">
+                    <label for="antallet">Antall:</label>
+                    <input type="number" class="form-control" id="antallet"/>
+                    <span id="antalletFeil" style="color: darkred"></span>
+                </div>
+                <div class="form-group">
+                    <label for="fornavnet">Fornavn:</label>
+                    <input type="text" class="form-control" id="fornavnet" />
+                    <span id="fornavnetFeil" style="color: darkred"></span>
+                </div>
+                <div class="form-group">
+                    <label for="etternavnet">Etternavn:</label>
+                    <input type="text" class="form-control" id="etternavnet" />
+                    <span id="etternavnetFeil" style="color: darkred"></span>
+                </div>
+                <div class="form-group">
+                    <label for="telefonnr">Telefonnr:</label>
+                    <input type="text" class="form-control" id="telefonnr" />
+                    <span id="telefonnrFeil" style="color: darkred"></span>
+                </div>
+                <div class="form-group">
+                    <label for="epost">Epost:</label>
+                    <input type="text" class="form-control" id="epost" />
+                    <span id="epostFeil" style="color: darkred"></span>
+                </div>
+                <button class="form control" onclick="regBillett()">Kjøp billett</button>
             </div>
+        </div>
+    </form>
+    <!--fisk her-->
+        <div class="col-md-8">
+            <h2>Alle billettene</h2>
+            <div id="skriveut"> </div>
+            <button class="btn btn-danger" id="slettBillettene()" onclick="slettBillettene()">Slett alle billettene</button>
         </div>
     </div>
 </div>
-
 </body>
 </html>
