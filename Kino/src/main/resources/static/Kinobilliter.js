@@ -1,112 +1,98 @@
 // function til kigpBillett
 
-function kjøpBillett(){
-    let feil = true;
+function regBillett() {
+
     const billett = {
-        velgFilm : $("#velgFilm").val(),
-        fornavnet : $("#fornavn").val(),
-        etternavnet : $("#etternavn").val(),
-        telefonnr : $("#telefonnr").val(),
-        epost : $("#epost").val(),
-        antall : $("#antall").val(),
+        film: $("#velgFilm").val(),
+        antall: $("#antallet").val(),
+        fornavn: $("#fornavnet").val(),
+        etternavn: $("#etternavnet").val(),
+        telefon: $("#telefonnr").val(),
+        epost: $("#epost").val()
     }
-     $.post('/lagre', billett, function () {
+
+    $.post('/lagre', billett, function () {
         hentAlle();
     });
-    const Fornavn = document.getElementById("fornavn").value;
-    const Etternavn = document.getElementById("etternavn").value;
-    const Telefonnr = document.getElementById("telefonnr").value;
-    const Epost = document.getElementById("epost").value;
-    /*  const Velgfilm = document.getElementById("velgFilm").value; */
-    const Antall = document.getElementById("antall").value;
 
-   if (Fornavn === "") {
-        document.getElementById("Fornavnet").innerHTML = "Skriv inn Fornavn"
-    } else {
-        document.getElementById("Fornavnet").innerHTML = ""
-    }
-    if (Etternavn === "") {
-        document.getElementById("Etternavnet").innerHTML = "Skriv inn Etternavn"
-    } else {
-        document.getElementById("Etternavnet").innerHTML = ""
-    } 
-    if (Antall === "") {
-        document.getElementById("Antallet").innerHTML = "Skriv inn Antall"
-    } else {
-        document.getElementById("Antallet").innerHTML = ""
-    }
+        const Fornavn = document.getElementById("fornavnet").value;
+        const Etternavn = document.getElementById("etternavnet").value;
+        const Telefonnr = document.getElementById("telefonnr").value;
+        const Epost = document.getElementById("epost").value;
+        const Antall = document.getElementById("antallet").value;
+
+        if (Fornavn === "") {
+            document.getElementById("fornavnetFeil").innerHTML = "Skriv inn Fornavn";
+            return;
+        } else {
+            document.getElementById("fornavnetFeil").innerHTML = "";
+        }
+        if (Etternavn === "") {
+            document.getElementById("etternavnetFeil").innerHTML = "Skriv inn Etternavn";
+            return;
+        } else {
+            document.getElementById("etternavnetFeil").innerHTML = "";
+        }
+        if (Antall === "") {
+            document.getElementById("antalletFeil").innerHTML = "Skriv inn Antall";
+            return;
+        } else {
+            document.getElementById("antalletFeil").innerHTML = "";
+        }
     if (Telefonnr === "") {
-        document.getElementById("Telefonnret").innerHTML = "Skriv inn Telefonnr"
+        document.getElementById("telefonnrFeil").innerHTML = "Skriv inn Telefonnr";
+        return;
     } else {
-        document.getElementById("Telefonnret").innerHTML = ""
+        document.getElementById("telefonnrFeil").innerHTML = "";
     }
     if (Epost === "") {
-        document.getElementById("Epostet").innerHTML = "Skriv inn E-post"
+        document.getElementById("epostFeil").innerHTML = "Skriv inn Epost";
+        return;
     } else {
-        document.getElementById("Epostet").innerHTML = ""
+        document.getElementById("epostFeil").innerHTML = "";
     }
-   
-    document.getElementById("fornavn").value="";
-    document.getElementById("etternavn").value="";
-    document.getElementById("antall").value="";
-    document.getElementById("telefonnr").value="";
-    document.getElementById("epost").value="";
 
-function hentAlle(){
-    $.get("/hentAlle", function(billettene){
+            // Clear input fields after successful submission
+            document.getElementById("fornavnet").value = "";
+            document.getElementById("etternavnet").value = "";
+            document.getElementById("antallet").value = "";
+            document.getElementById("telefonnr").value = "";
+            document.getElementById("epost").value = "";
+
+
+}
+function hentAlle() {
+    $.get("/hentAlle", function (billettene) {
         skriveut(billettene);
     });
 }
 
-function skriveut(billettene) {
-     let print = '';
+function skriveut(liste) {
+    let print = '';
     for (billett of liste) {
         print += "<tr>" +
-            "<td>" +billett.fornavn+ "</td>" +
-            "<td>" +billett.etternavn+ "</td>" +
-            "<td>" +billett.telefonnr+ "</td>" +
-            "<td>" +billett.epost+ "</td>" +
-            "<td>" +billett.film+ "</td>" +
-            "<td>" +billett.antall+ "</td>" +
+            "<td>" + billett.fornavn + "</td>" +
+            "<td>" + billett.etternavn + "</td>" +
+            "<td>" + billett.telefon + "</td>" +
+            "<td>" + billett.epost + "</td>" +
+            "<td>" + billett.film + "</td>" +
+            "<td>" + billett.antall + "</td>" +
             "</tr>";
-    
     }
     let ut = "<table class='table table-bordered table-striped'><tr>" +
         "<th>Fornavn</th>" +
         "<th>Etternavn</th>" +
-        "<th>Telefon</th>" +
+        "<th>Telefonnr</th>" +
         "<th>Epost</th>" +
         "<th>Film</th>" +
-        "<th>Antall billetter</th>" +
-        "</tr>" +print+ "</table>";
+        "<th>Antall</th>" +
+        "</tr>" + print + "</table>";
 
-    $("#tabell").html(ut);
+    $("#skriveut").html(ut); // Update the HTML content of #skriveut
 }
-
-//for å slette biletter
-
-function slettBillettene (){
-    $.get("/slettAlle", function(){
-        hentAlle();
-    });
+// To delete tickets
+function slettBillettene() {
+    $.get("/slettAlle", function () {
+        hentAlle(); // Fetch all tickets again after deleting
+    })
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
