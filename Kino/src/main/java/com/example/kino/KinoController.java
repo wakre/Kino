@@ -12,20 +12,20 @@ import java.util.List;
 public class KinoController {
 
         @Autowired
-        KinoRepository rep;
+         KinoRepository rep;
 
         @PostMapping("/lagre")
-        public void lagrebillett(Billetter innbillett){
-                rep.lagrebillett(innbillett);
+        public void lagreBillett(Billetter innbilletter){
+                rep.lagreBillett(innbilletter);
         }
 
         @GetMapping("/hentAlle")
         public List<Billetter> hentAlle(){
-                return rep.hentAlle();
+                return rep.hentAlleBilletter();
         }
 
-        @GetMapping("/slett")
-        public void slett(){
+        @GetMapping("/slettAlle")
+        public void slettAlle(){
                 rep.slettAlle();
         }
 }
